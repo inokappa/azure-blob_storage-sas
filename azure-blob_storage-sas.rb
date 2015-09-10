@@ -12,6 +12,7 @@ $storage_uri = "https://" + Azure.config.storage_account_name + ".blob.core.wind
 $container_name  = ENV["STORAGE_CONTAINER_NAME"]
 start_time = Time.now.utc.iso8601
 end_time = (Time.now + ENV['EXPIRE_TIME'].to_i).utc.iso8601
+content_key = ENV['CONTENT_KEY']
 content = ENV['CONTENT']
 
 #
@@ -61,7 +62,7 @@ blob_service = Azure::BlobService.new
 #
 # Upload blob
 #
-blob = blob_service.create_block_blob($container_name,"bar", content)
+blob = blob_service.create_block_blob($container_name, content_key, content)
 
 #
 # Output signed queriy and url

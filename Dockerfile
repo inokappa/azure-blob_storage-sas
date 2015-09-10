@@ -6,4 +6,4 @@ RUN chmod 755 /app/azure-blob_storage-sas.rb
 RUN gem install azure --version '0.6.4' --no-ri --no-rdoc
 RUN gem install addressable --no-ri --no-rdoc
 
-ENTRYPOINT /app/azure-blob_storage-sas.rb
+CMD /app/azure-blob_storage-sas.rb
