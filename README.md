@@ -8,15 +8,15 @@ Required following environment variables.
 - **STORAGE_ACCOUNT_NAME** Storage Account Name
 - **STORAGE_CONTAINER_NAME** Storage Container Name
 - **EXPIRE_TIME** SAS Expire time(sec)
-- *CONTENT_KEY** Content Key
-- *CONTENT** Content Value
+- **CONTENT_KEY** Content Key
+- **CONTENT** Content Value
 
 Generating SAS by `docker run`.
 
 ```sh
 $ docker run \
   --env 'STORAGE_ACCOUNT_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
-  --env 'STORAGE_ACCOUNT_NAME=komanechi' \
+  --env 'STORAGE_ACCOUNT_NAME=example' \
   --env 'STORAGE_CONTAINER_NAME=foo' \
   --env 'EXPIRE_TIME=30' \
   --env 'CONTENT_KEY=foo' \
@@ -29,7 +29,7 @@ output.
 ```sh
 $ docker run \
 > --env 'STORAGE_ACCOUNT_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
-> --env 'STORAGE_ACCOUNT_NAME=komanechi' \
+> --env 'STORAGE_ACCOUNT_NAME=example' \
 > --env 'STORAGE_CONTAINER_NAME=foo' \
 > --env 'EXPIRE_TIME=30' \
 > --env 'CONTENT_KEY=foo' \
@@ -63,17 +63,17 @@ f4e06c3e530e: Already exists
 97e3c96f87f8: Already exists
 Digest: sha256:ac3e0f3e67ae5e839592b6e89235fab775cb9aaa8d1c9bfb356734aa6041ffa8
 Status: Downloaded newer image for inokappa/azure-blob_storage-sas:latest
-SAS URI              : https://komanechi.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z
+SAS URI              : https://example.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z
 Start Time           : 2015-09-10T01:56:47Z
 End Time             : 2015-09-10T01:57:17Z
 Response Status Code : 200
 Response Body        : bar
 
-$ curl "https://komanechi.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z"
+$ curl "https://example.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z"
 bar
-$ curl "https://komanechi.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z"
+$ curl "https://example.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z"
 bar
-$ curl "https://komanechi.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z"
+$ curl "https://example.blob.core.windows.net/foo/foo?se=2015-09-10T01%3A57%3A17Z&sig=0gSuqpGu0Qz6jOVKePOPRn98LZU88RShEqIbd2dJ6LU%3D&sp=r&sr=b&st=2015-09-10T01%3A56%3A47Z"
 ・ｿ<?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signa ture.
 RequestId:23fecd3f-0001-0043-286c-ebbefd000000
 Time:2015-09-10T01:57:20.3584379Z</Message><AuthenticationErrorDetail>Signature not valid in the specified time frame: Start [Thu, 10 Sep 2015 01:56:47 GMT] - Expiry [Thu, 10 Sep 2015 01:57:17 GMT] - Current [Thu, 10 Sep 2015 01:57:20 GMT]</AuthenticationErrorDetail></Error>
